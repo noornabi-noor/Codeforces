@@ -77,8 +77,6 @@ void solve(){
     }
     cout << "\n";
 
-
-
 }
 
 int32_t main(){
@@ -93,4 +91,3 @@ int32_t main(){
     }
     ALHAMDULILLAH
 }
-wejkfhejkgf
