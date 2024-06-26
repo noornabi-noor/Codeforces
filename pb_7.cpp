@@ -48,6 +48,7 @@ public:
 int main()
 {
     area A(20, 10, 5);
+    //area A;
     // area C;
     // area T;
     cout << "Area of Rectangle: ";

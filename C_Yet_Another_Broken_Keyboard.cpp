@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <cstdint>
 using namespace std;
 
 #define int long long
@@ -56,6 +57,7 @@ void solve(){
         }
     }
     cout<<ans<<"\n";
+    
 }
 
 int32_t main(){
@@ -70,3 +72,10 @@ int32_t main(){
     }
     ALHAMDULILLAH
 }
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main(){
+//     cout<<"h\n";
+//     return 0;
+// }

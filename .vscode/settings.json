@@ -67,8 +67,12 @@
         "streambuf": "cpp",
         "thread": "cpp",
         "typeindex": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "climits": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled",
-    "audioCues.lineHasError": "off"
+    "C_Cpp.default.compilerPath": "C:\\MinGW\\bin\\gcc.exe",
+    "accessibility.signals.lineHasError": {
+        "sound": "off"
+    }
 }
