@@ -50,21 +50,60 @@ int countDivisors(int n){ if (n == 1) return 1; bool prime[n + 1], primesquare[n
 
     //.........Code Start Here.........
 
+    int n;
+    vll v(n),v1(n);
+
+   int isPossible(int target,vector<pair<int,int>> &v){
+	int lo = 0, hi = n-1, ans = 0;
+	while(lo <= hi){
+		int mid = (lo + hi) / 2;
+		if(v[mid].first <= target){
+			ans = mid;
+			lo = mid + 1;
+		}else{
+			hi = mid - 1;
+		}
+	}
+	return ans;
+}
 
 void solve(){
-    int n;
     cin>>n;
-    vll v(n);
-    vector<pair<int,int>>vp;
-    unordered_map<int,int>mp;
+    v.resize(n);
+    v1.resize(n);
+
+    vector<pair<int, int>> pv;
     for(int i=0;i<n;i++){
         cin>>v[i]; 
-        mp[v[i]]=i;
+        pv.pb({v[i],i});
     }
-    for(auto u:mp){
-        cout<<u.second<<" ";
+
+    sort(all(pv));
+    vll psum(n, 0);
+	psum[0] = pv[0].first;
+
+	for(int i=1; i<n; i++){
+		psum[i] = psum[i-1] + pv[i].first;
+	}
+
+	vll res(n, 0);
+	res[pv[n-1].second] = n-1;
+	for(int i=n-2; i>=0; i--){
+
+		int j = isPossible(psum[i],pv);
+
+		if(res[pv[j].second] != 0)
+			res[pv[i].second] = res[pv[j].second];
+		else
+			res[pv[i].second] = i;
+            
+	}
+
+	for(int i=0; i<n; i++){
+        cout<<res[i]<<" ";
     }
-    cout<<"\n";
+	cout<<"\n";	
+
 }
 
 int32_t main(){
@@ -79,83 +118,3 @@ int32_t main(){
     }
     ALHAMDULILLAH
 }
-
-// #include <iostream>
-// #include <algorithm>
-
-// int main() {
-//     int arr[] = {20, 5, 1, 4, 2};
-//     int n = sizeof(arr) / sizeof(arr[0]);
-
-//     // Sorting the array (important for lower_bound)
-//     std::sort(arr, arr + n);
-
-//     int target = 20;
-
-//     // Finding the lower bound of 20 in the array
-//     int* lowerBound = std::lower_bound(arr, arr + n, target);
-
-//     // Checking if the element was found
-//     if (lowerBound != arr + n && *lowerBound == target) {
-//         std::cout << "Lower bound of " << target << " is at index: " << lowerBound - arr << std::endl;
-//     } else {
-//         std::cout << "Element not found in the array." << std::endl;
-//     }
-
-//     return 0;
-// }
-
-
-// #include <iostream>
-// #include <algorithm>
-
-// int main() {
-//     int arr[] = {20, 5, 1, 4, 2};
-//     int n = sizeof(arr) / sizeof(arr[0]);
-
-//     // Sorting the array (important for lower_bound)
-//     std::sort(arr, arr + n);
-
-//     int target = 1;
-
-//     // Finding the lower bound of 20 in the array
-//     int* lowerBound = std::lower_bound(arr, arr + n, target);
-
-//     // Calculating the number of elements strictly less than the target
-//     int countLower = std::distance(arr, lowerBound);
-
-//     std::cout << "Number of elements strictly less than " << target << ": " << countLower << std::endl;
-
-//     return 0;
-// }
-
-
-// #include <iostream>
-// #include <algorithm>
-// #include <vector>
-
-// int main() {
-//     int arr[] = {20, 5, 1, 4, 2};
-//     int n = sizeof(arr) / sizeof(arr[0]);
-
-//     // Vector to store the result for each element
-//     std::vector<int> countLower(n);
-
-//     // Sorting the array (important for lower_bound)
-//     std::sort(arr, arr + n);
-
-//     for (int i = 0; i < n; ++i) {
-//         // Finding the lower bound of each element in the array
-//         int* lowerBound = std::lower_bound(arr, arr + n, arr[i]);
-
-//         // Calculating the number of elements strictly less than the current element
-//         countLower[i] = std::distance(arr, lowerBound);
-//     }
-
-//     // Printing the results
-//     for (int i = 0; i < n; ++i) {
-//         std::cout << "Number of elements strictly less than " << arr[i] << ": " << countLower[i] << std::endl;
-//     }
-
-//     return 0;
-// }
