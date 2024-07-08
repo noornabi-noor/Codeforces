@@ -55,7 +55,12 @@ int isPossible(int mid){
     for(int i=0;i<n;i++){
         if(v[i]<mid){
             tot+=(mid-v[i]);
+
+            if(tot>1e9){
+                return tot;
+            }
         }
+        
     }
     return tot;
 }
@@ -96,60 +101,3 @@ int32_t main(){
     }
     ALHAMDULILLAH
 }
-
-
-// #include <iostream>
-// #include <vector>
-// #include <algorithm>
-// using namespace std;
-
-// long long water_needed(int h, const vector<int>& heights) {
-//     long long total_water = 0;
-//     for (int height : heights) {
-//         if (h > height) {
-//             total_water += (h - height);
-//             if (total_water > 1e9) { // to avoid overflow and unnecessary calculations
-//                 return total_water;
-//             }
-//         }
-//     }
-//     return total_water;
-// }
-
-// int max_tank_height(int n, long long x, const vector<int>& heights) {
-//     int low = 1;
-//     int high = *max_element(heights.begin(), heights.end()) + x;
-
-//     while (low < high) {
-//         int mid = (low + high + 1) / 2;
-//         if (water_needed(mid, heights) <= x) {
-//             low = mid;
-//         } else {
-//             high = mid - 1;
-//         }
-//     }
-
-//     return low;
-// }
-
-// int main() {
-//     ios::sync_with_stdio(false);
-//     cin.tie(0);
-
-//     int t;
-//     cin >> t;
-//     while (t--) {
-//         int n;
-//         long long x;
-//         cin >> n >> x;
-
-//         vector<int> heights(n);
-//         for (int i = 0; i < n; ++i) {
-//             cin >> heights[i];
-//         }
-
-//         cout << max_tank_height(n, x, heights) << '\n';
-//     }
-
-//     return 0;
-// }
