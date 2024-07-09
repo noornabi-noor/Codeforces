@@ -47,49 +47,36 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 
 //.........Code Start Here.........
 
-int n,x;
-vll v(n);
-
-int isPossible(int mid){
-    int tot=0;
-    for(int i=0;i<n;i++){
-        if(v[i]<mid){
-            tot+=(mid-v[i]);
-
-            if(tot>1e9){
-                return tot;
-            }
-        }
-        
-    }
-    return tot;
-}
-
 void solve(){
-    cin>>n>>x;
-    v.resize(n);
-
-    int h=INT_MIN;
-    for(int i=0;i<n;i++){
-        cin>>v[i];
-        h=max(h,v[i]);
-    }
-
-    h=x+h;
-    int l=1;
-
-    while(l<=h){
-        int mid=l+(h-l)/2;
-
-        if(isPossible(mid)<=x){
-            l=mid+1;
-        }
-        else{
-            h=mid-1;
-        }
-    }
-
-    cout<<l-1<<"\n";
+    int q,n,a[200004]; 
+    int sum1=0;
+	int sum2=0;
+	int ans;
+	cin>>n;
+	int l=0,r=n+1;
+	for(int i=1;i<=n;i++)
+	{
+		cin>>a[i];
+	}
+	while(l<r){
+	if(sum1==sum2)
+	{
+		ans=l+(n-r+1);
+		l++;r--;
+	    sum1+=a[l];
+	    sum2+=a[r];
+	    continue;
+	}
+	if(sum1<sum2){
+		l++;
+		sum1+=a[l];
+		
+	}else{
+		r--;
+		sum2+=a[r];	
+	}
+	}
+	cout<<ans<<"\n";
 }
 
 int32_t main(){
