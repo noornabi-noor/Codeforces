@@ -48,34 +48,43 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 //.........Code Start Here.........
 
 void solve(){
-
     int n;
     cin>>n;
+    string s;
+    cin>>s;
 
-    vll v(n);
-    
-    int mx=INT_MIN;
+    int dif=n-11;
+    dif/=2;
 
-    map<int,int>mp;
+    int cnt_8=dif;
+    string mblNum;
+
     for(int i=0;i<n;i++){
-        cin>>v[i];
-       //mx=max(mx,v[i]);
-       mp[v[i]]++;
-    }
-
-     bool conanWins = false;
-
-    for (auto u : mp) {
-        if (u.second % 2 == 1) {
-            conanWins = true;
-            break;
+        if(s[i]=='8'){
+            if(dif>0){
+                dif--;
+            }
+            else{
+                mblNum+=s[i];
+            }
+        }
+        else{
+            if(cnt_8>0){
+                cnt_8--;
+            }
+            else{
+                mblNum+=s[i];
+            }
         }
     }
 
-    if (conanWins) {
-        cout << "Conan\n";
-    } else {
-        cout << "Agasa\n";
+    // cout<<cnt_8<<"\n";
+
+    if(mblNum[0]=='8'){
+        YES;
+    }
+    else{
+        NO;
     }
 
 }
@@ -89,3 +98,6 @@ int32_t main(){
     }
     ALHAMDULILLAH
 }
+
+
+//0 8 0 0 0 0 8 0 8 8 8 

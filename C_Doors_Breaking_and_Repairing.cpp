@@ -48,36 +48,32 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 //.........Code Start Here.........
 
 void solve(){
-
-    int n;
-    cin>>n;
-
-    vll v(n);
+    int n,x,y;
+    cin>>n>>x>>y;
     
-    int mx=INT_MIN;
-
-    map<int,int>mp;
+    vll v(n);
     for(int i=0;i<n;i++){
         cin>>v[i];
-       //mx=max(mx,v[i]);
-       mp[v[i]]++;
     }
 
-     bool conanWins = false;
-
-    for (auto u : mp) {
-        if (u.second % 2 == 1) {
-            conanWins = true;
-            break;
+    int cnt_sml_x=0;
+    for(int i=0;i<n;i++){
+        if(v[i]<=x){
+            cnt_sml_x++;
         }
     }
 
-    if (conanWins) {
-        cout << "Conan\n";
-    } else {
-        cout << "Agasa\n";
+    if(y<x){
+        cout<<n<<"\n";
     }
-
+    else{
+        if(cnt_sml_x&1){
+            cout<<(cnt_sml_x/2)+1<<"\n";
+        }
+        else{
+            cout<<(cnt_sml_x/2)<<"\n";
+        }
+    }
 }
 
 int32_t main(){
