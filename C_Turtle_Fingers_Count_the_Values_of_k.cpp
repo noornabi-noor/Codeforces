@@ -47,26 +47,55 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 
 //.........Code Start Here.........
 
+
+long long power(long long base, int exp) {
+    long long result = 1;
+    while (exp > 0) {
+        if (exp % 2 == 1) {
+            if (result > LLONG_MAX / base) {
+                return LLONG_MAX;  
+            }
+            result *= base;
+        }
+        exp /= 2;
+        if (base > LLONG_MAX / base) {
+            return LLONG_MAX; 
+        }
+        base *= base;
+    }
+    return result;
+}
+
 void solve(){
-    int a,b,l;
-    cin>>a>>b>>l;
+    long long a, b, l;
+    cin >> a >> b >> l;
     int val_a = (log(l) / log(a));
     int val_b = (log(l) / log(b));
-    //cout<<val_a<<" "<<val_b<<"\n";
-    set<int> s;
+    
+    set<long long> s;
 
-            for (int i = 0; i <= val_a*2; i++) {
-                for (int j = 0; j <= val_b*2; j++) {
-                    int a_new = pow(a, i);
-                    int b_new = pow(b, j);
-                    int prd = a_new * b_new;
-                    if (l >= prd && l % prd == 0) {
-                        s.insert(prd);
-                    }
-                }
+    for (int i = 0; i <= val_a * 2; i++) {
+        for (int j = 0; j <= val_b * 2; j++) {
+            long long a_new = power(a, i);
+            long long b_new = power(b, j);
+
+            if (a_new == LLONG_MAX || b_new == LLONG_MAX) {
+                continue;
+            }
+
+            if (a_new > LLONG_MAX / b_new) {
+                continue;
+            }
+
+            long long prd = a_new * b_new;
+
+            if (l >= prd && l % prd == 0) {
+                s.insert(prd);
+            }
         }
+    }
 
-    cout << s.size() <<"\n";
+    cout << s.size() << "\n";
 }
 
 int32_t main(){
@@ -78,39 +107,3 @@ int32_t main(){
     }
     ALHAMDULILLAH
 }
-
-
-
-
-// #include <iostream>
-// #include <cmath>
-// #include <set>
-
-// void solve() {
-//     int a, b, l;
-//     std::cin >> a >> b >> l;
-//     int loop_val_a = static_cast<int>(std::log(l) / std::log(a));
-//     int loop_val_b = static_cast<int>(std::log(l) / std::log(b));
-//     std::set<int> s;
-//     for (int i = 0; i < loop_val_a + 2; ++i) {
-//         for (int j = 0; j < loop_val_b + 2; ++j) {
-//             int a_new = static_cast<int>(std::pow(a, i));
-//             int b_new = static_cast<int>(std::pow(b, j));
-//             int prd = a_new * b_new;
-//             if (l >= prd && l % (prd) == 0) {
-//                 s.insert(prd);
-//             }
-//         }
-//     }
-//     std::cout << s.size() << std::endl;
-// }
-
-// int main() {
-//     int t;
-//     std::cin >> t;
-//     for (int i = 0; i < t; ++i) {
-//         solve();
-//     }
-//     return 0;
-// }
-

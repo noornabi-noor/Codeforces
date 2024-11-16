@@ -72,10 +72,3 @@ int32_t main(){
     }
     ALHAMDULILLAH
 }
-
-// #include<bits/stdc++.h>
-// using namespace std;
-// int main(){
-//     cout<<"h\n";
-//     return 0;
-// }
