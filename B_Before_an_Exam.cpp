@@ -47,56 +47,59 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 
 //.........Code Start Here.........
 
-int n,k,b,s;
-vll p,a;
-vll bSerial,sSerial;
-set<int> seen;
-
-void sequence_vector(){
-    bSerial.pb(p[b]);
-    int ind = p[b]; 
-
-    while (true) {
-        if (seen.count(ind)) {
-            break; 
-        }
-        seen.insert(ind); 
-        ind = p[ind];     
-        if (seen.count(ind)) {
-            break;
-        }
-        bSerial.pb(ind); 
-    }
-}
-
 void solve(){
-    
-    cin>>n>>k>>b>>s;
-
-    p.resize(n+1);
-    a.resize(n+1);
-
-    for(int i=1;i<=n;i++){
-        cin>>p[i];
-    }
-    for(int i=1;i<=n;i++){
-        cin>>a[i];
-    }
-
-
-    cout << "bSerial sequence: ";
-    for (int x : bSerial) {
-        cout << a[x] << " ";
-    }
-    cout << endl;
-
-
+    int n,m;
+	int sumi = 0;
+	int suma = 0;
+	vector<int> ma1;
+	vector<int> mi1;
+ 
+	cin >> n>>m;
+	for (int i = 0;i < n;i++) 
+	{
+		int mi, ma;
+		cin >> mi >> ma;
+		mi1.push_back(mi);
+		ma1.push_back(ma);
+		sumi += mi;
+		suma += ma;
+ 
+	}
+	if (m >= sumi && m<= suma) 
+	{
+		int y = m - sumi;
+		for (int j = 0;j < n;j++) 
+		{
+			if (ma1[j] - mi1[j] > y) 
+			{
+				mi1[j] += y;
+				break;
+			}
+			else 
+			{
+				int o = ma1[j] - mi1[j];
+				mi1[j] += ma1[j] - mi1[j];
+				y-= o;
+			}
+		}
+		YES;
+		for (auto& i : mi1) 
+		{
+			cout << i << " ";
+		}
+		cout << endl;
+ 
+	}
+	else 
+	{
+		NO;
+	}
 }
 
 int32_t main(){
     BISMILLAH
     int te=1;
-    cin>>te;
+    //cin>>te;
     while(te--){
         solve();
     }
