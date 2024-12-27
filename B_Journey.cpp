@@ -48,7 +48,52 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 //.........Code Start Here.........
 
 void solve(){
+    int s, a, b, c;
+    cin >> s >> a >> b >> c;
+
+    int k = a+b+c;
+    int ans = (s+k-1)/k;
     
+    int kk = (ans)*k;
+    ans*=3;
+
+    if(kk-c>=s){
+        ans--;
+        kk-=c;
+    }
+    else{
+        cout << ans << "\n";
+        return;
+    }
+
+    if(kk-b>=s){
+        ans--;
+        kk-=b;
+    }
+    else{
+        cout << ans << "\n";
+        return;
+    }
+
+    if(kk-a>=s){
+        ans--;
+        kk-=a;
+    }
+    else{
+        cout << ans << "\n";
+        return;
+    }
+
+    if(kk-c>=s){
+        ans--;
+        kk-=c;
+    }
+    else{
+        cout << ans << "\n";
+        return;
+    }
+    
+    cout << ans << "\n";
 }
 
 int32_t main(){

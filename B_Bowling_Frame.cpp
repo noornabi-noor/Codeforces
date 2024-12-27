@@ -48,13 +48,26 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 //.........Code Start Here.........
 
 void solve(){
+    int test;
+    cin>>test;
+
+    int arr[test];
     
+	for(int i = 0 ;i < test ; i++){
+		int b,w;
+		cin >> b >> w;
+		arr[i] = (sqrt(1+8*(b+w))-1)/2;
+	}
+
+	for(int i = 0 ; i < test ; i++){
+		cout << arr[i] << "\n";
+	}
 }
 
 int32_t main(){
     BISMILLAH
     int te=1;
-    cin>>te;
+    //cin>>te;
     while(te--){
         solve();
     }

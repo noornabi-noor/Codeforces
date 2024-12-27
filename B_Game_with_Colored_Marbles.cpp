@@ -48,7 +48,21 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 //.........Code Start Here.........
 
 void solve(){
-    
+        int n;
+		cin>>n;
+		int a[n],b[n]={0};
+		for(int i=0;i<n;i++)
+		{
+			cin>>a[i];
+			b[a[i]-1]++;
+		}
+		int c1=0,c2=0;
+		for(int i=0;i<n;i++)
+		{
+			if(b[i]==1) c1++;
+			else if(b[i]>1) c2++;
+		}
+		cout<<(c1+1)/2*2+c2<<"\n";
 }
 
 int32_t main(){

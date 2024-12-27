@@ -48,6 +48,38 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 //.........Code Start Here.........
 
 void solve(){
+     int n,i;
+       cin>>n;
+       vector<pair<int,int>>v;
+       for(i=1;i<=n;i++)
+       {
+          int x,y;
+           cin>>x>>y;
+           v.push_back({x,y});
+       }
+       int s1,s2,d1,d2;
+       cin>>s1>>s2>>d1>>d2;
+       int ans=0;
+       int d=((s1-d1)*1LL*(s1-d1)*1LL+(s2-d2)*(s2-d2)*1LL);
+       for(auto x:v)
+       {
+           int f=x.first,s=x.second;
+           int h=((f-d1)*(f-d1)*1LL+(s-d2)*(s-d2)*1LL);
+           //cout<<d<<" "<<h<<endl;
+           if(h<=d)
+           {
+              ans=1;
+              break;
+           }
+       }
+       if(ans==0)
+       {
+          YES;
+       }
+       else
+       {
+           NO;
+       }
     
 }
 

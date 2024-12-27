@@ -46,9 +46,37 @@ int nPr(int n, int r) { if (r > n) { return 0;} return mod_div(fact(n), fact(n -
 int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul(fact(r), fact(n - r))); }
 
 //.........Code Start Here.........
+int bins(int a,vll &ans,int n){
+    int l=1,r=n,mid;
+    while(l<=r){
+        if(l>n)return n;
+        mid=(l+r)/2;
+        if(ans[mid]<=a){
+            l=mid+1;
+        }
+        else{
+            r=mid-1;
+        }
+    }
+    return l;
+}
 
 void solve(){
-    
+    int n,q;
+    cin>>n>>q;
+    vll v(n),ans(n+1),ps(n+1);
+    ans[0]=1;ps[0]=0;
+    for(int i=0;i<n;i++){
+        cin>>v[i];
+        ans[i+1]=max(ans[i],v[i]);
+        ps[i+1]=ps[i]+v[i];
+    }
+ 
+    for(int i=0;i<q;i++){
+        int a;cin>>a;
+        cout<<ps[bins(a,ans,n)-1]<<" ";
+    }
+    cout<<endl;
 }
 
 int32_t main(){

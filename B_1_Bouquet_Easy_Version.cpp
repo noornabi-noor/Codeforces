@@ -48,7 +48,27 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 //.........Code Start Here.........
 
 void solve(){
-    
+    int n,m;
+    cin >> n >> m;
+
+        vll v(n);
+        for (int i = 0; i < n; i++) {
+            cin >> v[i];
+        }
+
+        sort (all(v));
+        int start = 0,sum = 0 ,ans =0;
+
+        for(int i=0;i<n;i++){
+            sum += v[i];
+            while(sum > m || (start < n && v[i] - v[start] > 1 )){
+                sum -= v[start];
+                start++;
+            }
+            ans = max(ans,sum);
+        }
+        
+        cout << ans << endl;
 }
 
 int32_t main(){

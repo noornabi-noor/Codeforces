@@ -49,25 +49,63 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 
 int n,k,b,s;
 vll p,a;
-vll bSerial,sSerial;
-set<int> seen;
+vll bSerial,sSerial,bodya,sasha;
+set<int> seenBodya,seenSasha;
 
-void sequence_vector(){
-    bSerial.pb(p[b]);
-    int ind = p[b]; 
 
-    while (true) {
-        if (seen.count(ind)) {
-            break; 
-        }
-        seen.insert(ind); 
-        ind = p[ind];     
-        if (seen.count(ind)) {
-            break;
-        }
-        bSerial.pb(ind); 
+
+void sequence_vector_bodya(){
+    // bSerial.pb(p[b]);
+    // int ind = p[b]; 
+
+    // while (true) {
+    //     if (seenBodya.count(ind)) {
+    //         break; 
+    //     }
+    //     seenBodya.insert(ind); 
+    //     ind = p[ind];     
+    //     if (seenBodya.count(ind)) {
+    //         break;
+    //     }
+    //     bSerial.pb(p[ind]); 
+    // }
+
+
+    map<int, int> mp;
+    int ind=b;
+
+    //mp[1] = {p[b], a[b]};
+
+    mp[p[b]]=a[b];
+
+    
+
+    for(auto u:mp){
+        cout<<u.first<<" "<<u.second<<" ";
     }
+    cout<<"\n";
+
+
+
 }
+
+// void sequence_vector_sasha(){
+//     sSerial.pb(s);
+//     int ind = p[s]; 
+
+//     while (true) {
+//         if (seenSasha.count(ind)) {
+//             break; 
+//         }
+//         seenSasha.insert(ind); 
+//         ind = p[ind];     
+//         if (seenSasha.count(ind)) {
+//             break;
+//         }
+//         sSerial.pb(ind); 
+//     }
+
+// }
 
 void solve(){
     
@@ -83,12 +121,18 @@ void solve(){
         cin>>a[i];
     }
 
+    sequence_vector_bodya();
+    //sequence_vector_sasha();
 
-    cout << "bSerial sequence: ";
-    for (int x : bSerial) {
-        cout << a[x] << " ";
-    }
-    cout << endl;
+    // for (int x : bSerial) {
+    //     cout <<a[x]<< " ";
+    // }
+    // cout << endl;
+
+    // for (int x : sSerial) {
+    //     cout << a[x] << " ";
+    // }
+    // cout << endl;
 
 
 }

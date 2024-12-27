@@ -48,7 +48,37 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 //.........Code Start Here.........
 
 void solve(){
-    
+    int n;
+    cin>>n;
+    vll a(n);
+    for(int i=0;i<n;i++)
+        cin>>a[i];
+ 
+    bool flag=1;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i] == i+1)
+            continue;
+        else if(a[i] == i+2)
+        {
+            if(a[i+1] == a[i]-1)
+                swap(a[i],a[i+1]);
+            else
+            {
+                flag = 0;
+                break;
+            }
+        }
+        else
+        {
+            flag = 0;
+            break;
+        }
+    }
+    if(flag)
+        YES;
+    else
+        NO;
 }
 
 int32_t main(){

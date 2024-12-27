@@ -47,8 +47,19 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 
 //.........Code Start Here.........
 
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
+
+int findRes(int a, int b) {
+    int l = lcm(a, b);
+    return max(l, max(a, b)); 
+}
+
 void solve(){
-    
+    int a,b;
+    cin>>a>>b;
+    cout << findRes(a, b) <<"\n";
 }
 
 int32_t main(){

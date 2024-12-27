@@ -47,9 +47,38 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 
 //.........Code Start Here.........
 
-void solve(){
-    
+void solve() {
+    int n, a, b;
+    cin >> n >> a >> b;
+
+    string s;
+    cin >> s;
+
+    int count = 0;  
+    int res = 0;    
+
+    for (int i = 0; i < n; i++) {
+        if (s[i] == '0') {
+            count++;
+            if (count == a) { 
+               
+                res++;
+                count = 0;
+
+                if (b > 1) {
+                    i += b - 1;
+                }
+                
+            }
+        } 
+        else {
+            count = 0;  
+        }
+    }
+
+    cout << res << "\n";
 }
+
 
 int32_t main(){
     BISMILLAH

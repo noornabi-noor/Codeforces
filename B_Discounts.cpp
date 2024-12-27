@@ -8,7 +8,7 @@ using namespace std;
 #define pll pair<int, int>
 
 #define mod 1000000007
-const int N = (int)1e6;
+const int N = (int)3e5+10;
 #define BISMILLAH ios_base::sync_with_stdio(0);cin.tie(0);
 #define ALHAMDULILLAH return 0;
 #define YES cout << "YES" << '\n'
@@ -47,14 +47,32 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 
 //.........Code Start Here.........
 
+int a[300010];
+int b[300010];
+int n,m;
+long long sum;
+ 
 void solve(){
-    
+   
+   cin>>n;
+	for(int x=1;x<=n;x++){
+		cin>>a[x];
+		sum+=a[x];
+	}
+	sort(a+1,a+1+n);
+	cin>>m;
+	for(int x=1;x<=m;x++){
+		cin>>b[x];
+	}
+	for(int x=1;x<=m;x++){
+		cout<<sum-a[n-b[x]+1]<<endl;
+	}
 }
 
 int32_t main(){
     BISMILLAH
     int te=1;
-    cin>>te;
+    //cin>>te;
     while(te--){
         solve();
     }

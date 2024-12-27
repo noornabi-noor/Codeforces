@@ -48,7 +48,18 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 //.........Code Start Here.........
 
 void solve(){
-    
+    string s;
+        cin>>s;
+        int n=s.size();
+        int pos=-1;
+        for(int i=1; i<=n-2; i++) {
+            if(s[i]=='a') {
+                pos=i;
+                break;
+            }
+        }
+        if(pos !=-1)  cout<<s.substr(0,pos) <<" "<<s[pos]<<" "<<s.substr(pos+1,n-1)<<"\n";
+        else cout<<s[0]<<" "<<s.substr(1,n-2)<<" "<<s[n-1]<<"\n";
 }
 
 int32_t main(){

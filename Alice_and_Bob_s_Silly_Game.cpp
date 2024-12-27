@@ -47,14 +47,56 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 
 //.........Code Start Here.........
 
+vector<int> precomputePrimes(int maxN) {
+    vector<bool> isPrime(maxN + 1, true);
+    vector<int> primeCount(maxN + 1, 0);
+
+    isPrime[0] = isPrime[1] = false; 
+
+    for (int i = 2; i <= maxN; ++i) {
+        if (isPrime[i]) {
+            
+            for (int j = i * 2; j <= maxN; j += i) {
+                isPrime[j] = false;
+            }
+        }
+        
+        primeCount[i] = primeCount[i - 1] + (isPrime[i] ? 1 : 0);
+    }
+
+    return primeCount;
+}
+
 void solve(){
+    int t;
+    cin >> t; 
+
+    vector<int> games(t);
+    int maxN = 0;
+
     
+    for (int i = 0; i < t; ++i) {
+        cin >> games[i];
+        maxN = max(maxN, games[i]);
+    }
+
+   
+    vector<int> primeCount = precomputePrimes(maxN);
+
+   
+    for (int n : games) {
+        if (primeCount[n] % 2 == 0) {
+            cout << "Bob" << endl; 
+        } else {
+            cout << "Alice" << endl; 
+        }
+    }
 }
 
 int32_t main(){
     BISMILLAH
     int te=1;
-    cin>>te;
+    //cin>>te;
     while(te--){
         solve();
     }

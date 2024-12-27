@@ -48,7 +48,9 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 //.........Code Start Here.........
 
 void solve(){
-    
+    int n;
+    cin  >> n;
+    cout<< n <<endl;
 }
 
 int32_t main(){

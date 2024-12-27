@@ -48,7 +48,33 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 //.........Code Start Here.........
 
 void solve(){
-    
+    int n,k;
+        cin>>n>>k;
+        vll a(n);
+        for(long long i=0; i<n; i++)
+        {
+            cin>>a[i];
+        }
+        vll check(n);
+        for(long long i=0; i<n; i++)
+        {
+            check[i] = i+a[i]+1;
+        }
+        int count=0 , sum=0;
+        sort(check.begin() , check.end());
+        for(int i=0; i<n; i++)
+        {
+            sum+=check[i];
+            if(sum<=k)
+            {
+                count++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        cout<<count<<"\n";
 }
 
 int32_t main(){

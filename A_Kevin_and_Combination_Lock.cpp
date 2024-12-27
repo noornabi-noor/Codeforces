@@ -48,7 +48,15 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 //.........Code Start Here.........
 
 void solve(){
-    
+    int n;
+    cin>>n;
+
+    if(n%33==0){
+        YES;
+    }
+    else{
+        NO;
+    }
 }
 
 int32_t main(){

@@ -48,8 +48,40 @@ int nCr(int n, int r) { if (r > n) { return 0; } return mod_div(fact(n), mod_mul
 //.........Code Start Here.........
 
 void solve(){
-    
+        int n;
+        cin>>n;
+        int j=1;
+        int cur=1;
+        int ans=0;
+        int rem=0;
+        for(int i=0;i<n;i++){
+            int x;
+            cin>>x;
+            int temp=x+rem;
+            if(temp==cur){
+                ans++;
+                
+                cur=4*(j+1);
+                j+=2;
+                rem=0;
+            }
+            else if(temp>cur){
+                while(temp>=cur){
+                    temp=temp-cur;
+                    cur=4*(j+1);
+                    j+=2;
+                }
+                if(temp==0) {
+                    ans++;
+                    rem=0;
+                }
+                else rem=temp;
+            }
+            else rem=temp;
+        }
+        cout<<ans<<'\n';
 }
+
 
 int32_t main(){
     BISMILLAH
